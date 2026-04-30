@@ -1,0 +1,21 @@
+F5 AppWorld Seoul 2026 EDM - OFT conversion guide
+
+A real .oft file is an Outlook for Windows template format. This workspace can create standards-based HTML and EML files, but it cannot reliably generate the proprietary Outlook .oft binary without Outlook for Windows/COM automation.
+
+Recommended OFT workflow in Outlook for Windows:
+1. Keep this folder structure intact, including the assets folder.
+2. On a Windows PC with Outlook installed, open PowerShell in this folder.
+3. Run: powershell -ExecutionPolicy Bypass -File .\Create_OFT_Windows_Outlook.ps1
+4. The script creates F5_AppWorld_Seoul_2026_EDM.oft in this folder.
+
+Alternative workflow:
+1. Open F5_AppWorld_Seoul_2026_EDM.eml in Outlook.
+2. Confirm the image body and the Naver button link render correctly.
+3. Choose File > Save As.
+4. Set Save as type to Outlook Template (*.oft).
+5. Save as F5_AppWorld_Seoul_2026_EDM.oft.
+
+Important for real campaigns:
+- Replace https://www.naver.com/ with the final registration URL.
+- Replace local image paths or CID images with the sending platform's hosted HTTPS image URLs if your ESP does not preserve inline CID images.
+- Add unsubscribe and sender postal address in the ESP/template footer for compliance.
