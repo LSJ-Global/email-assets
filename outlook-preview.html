@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>F5 EDM Outlook Preview</title>
+  <style>
+    :root {
+      --bg: #111111;
+      --panel: #1c1c1c;
+      --panel-2: #262626;
+      --text: #f5f5f5;
+      --muted: #b8b8b8;
+      --accent: #ff2953;
+      --border: #343434;
+      --ok: #38d39f;
+      --warn: #ffb648;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(255, 41, 83, 0.22), transparent 24%),
+        radial-gradient(circle at left center, rgba(107, 46, 255, 0.14), transparent 26%),
+        var(--bg);
+      color: var(--text);
+    }
+
+    .wrap {
+      width: min(1240px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 40px;
+    }
+
+    .hero {
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: rgba(28, 28, 28, 0.92);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.32);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(255, 41, 83, 0.14);
+      color: #ff9cad;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(30px, 5vw, 48px);
+      line-height: 1.05;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 840px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(320px, 0.9fr);
+      gap: 24px;
+      margin-top: 24px;
+      align-items: start;
+    }
+
+    .panel {
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: rgba(28, 28, 28, 0.92);
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24);
+    }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+    }
+
+    .panel-head h2 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .panel-head span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .browser-shell {
+      padding: 24px;
+      background: linear-gradient(180deg, #161616, #0f0f0f);
+    }
+
+    .browser-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #151515;
+    }
+
+    .dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #525252;
+    }
+
+    .url {
+      flex: 1;
+      min-width: 0;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: var(--panel-2);
+      color: #d8d8d8;
+      font-size: 13px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    iframe {
+      display: block;
+      width: 100%;
+      height: 900px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: #fff;
+    }
+
+    .notes {
+      padding: 22px;
+    }
+
+    .note-box {
+      margin-bottom: 16px;
+      padding: 16px 18px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: #171717;
+    }
+
+    .note-box strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+
+    .note-box p,
+    .note-box li {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .note-box p,
+    .note-box ul {
+      margin: 0;
+    }
+
+    .note-box ul {
+      padding-left: 18px;
+    }
+
+    .pill {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .pill.ok {
+      background: rgba(56, 211, 159, 0.16);
+      color: var(--ok);
+    }
+
+    .pill.warn {
+      background: rgba(255, 182, 72, 0.16);
+      color: var(--warn);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .actions a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 16px;
+      border-radius: 999px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      background: linear-gradient(135deg, #ff2953, #b21fff);
+    }
+
+    .actions a.secondary {
+      background: #2b2b2b;
+      border: 1px solid #414141;
+    }
+
+    @media (max-width: 980px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .wrap {
+        width: min(100% - 20px, 1240px);
+      }
+
+      .hero,
+      .panel {
+        border-radius: 20px;
+      }
+
+      iframe {
+        height: 720px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <span class="eyebrow">Outlook Preview Hub</span>
+      <h1>F5 AppWorld Seoul 2026<br>EDM 미리보기</h1>
+      <p>
+        이 페이지는 현재 프로젝트에 들어있는 이메일 HTML을 사이트 형태로 바로 확인할 수 있게 만든 로컬/정적 미리보기입니다.
+        다만 이 화면은 브라우저 렌더 기준이며, Outlook Windows 구버전처럼 Word 엔진을 쓰는 클라이언트의 실제 결과와 100% 동일하지는 않습니다.
+      </p>
+      <div class="actions">
+        <a href="deliverables/F5_AppWorld_Seoul_2026_EDM.html" target="_blank" rel="noreferrer">원본 HTML 열기</a>
+        <a class="secondary" href="deliverables/F5_AppWorld_Seoul_2026_EDM.eml" target="_blank" rel="noreferrer">EML 파일 열기</a>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="panel">
+        <div class="panel-head">
+          <h2>Live Render</h2>
+          <span>Browser preview of current EDM file</span>
+        </div>
+        <div class="browser-shell">
+          <div class="browser-bar">
+            <div class="dots">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+            <div class="url">deliverables/F5_AppWorld_Seoul_2026_EDM.html</div>
+          </div>
+          <iframe
+            title="F5 EDM Preview"
+            src="deliverables/F5_AppWorld_Seoul_2026_EDM.html">
+          </iframe>
+        </div>
+      </article>
+
+      <aside class="panel">
+        <div class="panel-head">
+          <h2>Outlook Notes</h2>
+          <span>What this preview can and cannot prove</span>
+        </div>
+        <div class="notes">
+          <div class="note-box">
+            <strong>지금 이 페이지에서 확인 가능한 것</strong>
+            <p>분할 이미지 연결 상태, 버튼 링크 위치, 검은 배경 이어짐, 고정 폭 750px 레이아웃, 전체 시각 구성.</p>
+            <span class="pill ok">확인 가능</span>
+          </div>
+
+          <div class="note-box">
+            <strong>이 페이지로는 확인 불가능한 것</strong>
+            <p>Outlook 2016/2019/2021/Office 365 Windows 데스크톱의 Word 렌더 차이, 고해상도 DPI 스케일 이슈, 실제 발송 후 클라이언트별 마진 보정 차이.</p>
+            <span class="pill warn">실제 Outlook 테스트 필요</span>
+          </div>
+
+          <div class="note-box">
+            <strong>현재 HTML 기준 Outlook 친화 포인트</strong>
+            <ul>
+              <li>표 기반 구조와 고정 폭 레이아웃을 사용합니다.</li>
+              <li>버튼 구간을 이미지 분할로 처리해 Outlook에서도 클릭 영역을 안정적으로 유지하기 쉽습니다.</li>
+              <li>각 이미지에 `display:block`과 `font-size:0` 구간을 써서 경계선 가능성을 낮췄습니다.</li>
+            </ul>
+          </div>
+
+          <div class="note-box">
+            <strong>실제 전 버전 검증이 필요하면</strong>
+            <p>Litmus 또는 Email on Acid 같은 이메일 테스트 서비스에서 Outlook 버전별 스크린샷을 받아야 합니다. 지금 페이지는 그 전에 내부 검수용으로 보기 좋게 만든 미리보기 허브입니다.</p>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </div>
+</body>
+</html>

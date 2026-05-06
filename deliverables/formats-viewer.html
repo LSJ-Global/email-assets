@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>F5 EDM Format Viewer</title>
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --panel: #171717;
+      --panel-2: #202020;
+      --line: #333;
+      --text: #f4f4f4;
+      --muted: #b9b9b9;
+      --accent: #ff184e;
+      --accent-2: #9d38ff;
+      --ok: #39d39d;
+      --warn: #ffb547;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top right, rgba(157, 56, 255, 0.18), transparent 22%),
+        radial-gradient(circle at left top, rgba(255, 24, 78, 0.18), transparent 24%),
+        var(--bg);
+    }
+
+    .wrap {
+      width: min(1280px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 28px 0 40px;
+    }
+
+    .hero {
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(23, 23, 23, 0.92);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(255, 24, 78, 0.12);
+      color: #ff8da8;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(30px, 4.8vw, 46px);
+      line-height: 1.06;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 900px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .toolbar a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 16px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    }
+
+    .toolbar a.secondary {
+      background: #2a2a2a;
+      border: 1px solid #404040;
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .tab-button {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #202020;
+      color: #efefef;
+      padding: 12px 16px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .tab-button.active {
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    }
+
+    .panel {
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(23, 23, 23, 0.94);
+      overflow: hidden;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+    }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .panel-head h2 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .badge.ok {
+      background: rgba(57, 211, 157, 0.16);
+      color: var(--ok);
+    }
+
+    .badge.warn {
+      background: rgba(255, 181, 71, 0.16);
+      color: var(--warn);
+    }
+
+    .tab-panel {
+      display: none;
+      padding: 22px;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    .browser-shell {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: linear-gradient(180deg, #171717, #101010);
+    }
+
+    .browser-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #151515;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #555;
+    }
+
+    .dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .url {
+      flex: 1;
+      min-width: 0;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: #242424;
+      color: #ddd;
+      font-size: 13px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    iframe {
+      display: block;
+      width: 100%;
+      height: 920px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+    }
+
+    .code-box,
+    .note-box {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #131313;
+    }
+
+    .code-box {
+      overflow: auto;
+    }
+
+    pre {
+      margin: 0;
+      padding: 18px;
+      color: #e8e8e8;
+      font: 13px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .note-box {
+      padding: 18px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .note-box strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text);
+      font-size: 16px;
+    }
+
+    .note-box ol,
+    .note-box ul {
+      margin: 8px 0 0;
+      padding-left: 20px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+      gap: 18px;
+    }
+
+    .meta-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .meta-item {
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #151515;
+    }
+
+    .meta-item strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 15px;
+    }
+
+    .meta-item span {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 980px) {
+      .wrap {
+        width: min(100% - 18px, 1280px);
+      }
+
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      iframe {
+        height: 720px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <span class="eyebrow">Format Viewer</span>
+      <h1>F5 AppWorld Seoul 2026<br>EDM 형식별 보기</h1>
+      <p>
+        이 페이지에서 같은 EDM을 `HTML`, `EML`, `OFT` 기준으로 나눠서 확인할 수 있습니다.
+        `HTML`은 브라우저 렌더로 바로 미리보고, `EML`은 메일 원문과 파일 링크로 보고, `OFT`는 Outlook 전용 템플릿 특성상 생성 및 사용 방법을 안내합니다.
+      </p>
+      <div class="toolbar">
+        <a href="F5_AppWorld_Seoul_2026_EDM.html" target="_blank" rel="noreferrer">HTML 열기</a>
+        <a href="F5_AppWorld_Seoul_2026_EDM.eml" target="_blank" rel="noreferrer">EML 열기</a>
+        <a class="secondary" href="Create_OFT_Windows_Outlook.ps1" target="_blank" rel="noreferrer">OFT 생성 스크립트</a>
+        <a class="secondary" href="F5_AppWorld_Seoul_2026_OFT_INSTRUCTIONS.txt" target="_blank" rel="noreferrer">OFT 안내문</a>
+      </div>
+    </section>
+
+    <div class="tabs" role="tablist" aria-label="Format tabs">
+      <button class="tab-button active" type="button" data-tab="html">HTML</button>
+      <button class="tab-button" type="button" data-tab="eml">EML</button>
+      <button class="tab-button" type="button" data-tab="oft">OFT</button>
+    </div>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2 id="panel-title">HTML Preview</h2>
+        <span class="badge ok" id="panel-badge">바로 미리보기 가능</span>
+      </div>
+
+      <div class="tab-panel active" data-panel="html">
+        <div class="browser-shell">
+          <div class="browser-bar">
+            <div class="dots">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+            <div class="url">deliverables/F5_AppWorld_Seoul_2026_EDM.html</div>
+          </div>
+          <iframe title="HTML preview" src="F5_AppWorld_Seoul_2026_EDM.html"></iframe>
+        </div>
+      </div>
+
+      <div class="tab-panel" data-panel="eml">
+        <div class="two-col">
+          <div class="code-box">
+            <pre id="eml-source">EML 파일을 불러오는 중...</pre>
+          </div>
+          <div class="meta-list">
+            <div class="meta-item">
+              <strong>EML 파일</strong>
+              <span>표준 메일 원문 포맷입니다. 메일 클라이언트로 열었을 때 본문과 헤더를 함께 확인할 수 있습니다.</span>
+            </div>
+            <div class="meta-item">
+              <strong>권장 확인 방식</strong>
+              <span>Outlook, Apple Mail, Thunderbird 같은 메일 클라이언트에서 직접 열어 실제 메시지 형태로 확인하는 것이 가장 정확합니다.</span>
+            </div>
+            <div class="meta-item">
+              <strong>빠른 링크</strong>
+              <span><a href="F5_AppWorld_Seoul_2026_EDM.eml" target="_blank" rel="noreferrer" style="color:#fff;">EML 파일 직접 열기</a></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-panel" data-panel="oft">
+        <div class="two-col">
+          <div class="note-box">
+            <strong>OFT는 브라우저 미리보기가 불가능합니다</strong>
+            Outlook용 `.oft`는 Windows Outlook이 만드는 전용 템플릿 형식이라 일반 웹페이지처럼 렌더해 보여줄 수 없습니다.
+            현재 이 프로젝트에는 `OFT` 생성용 스크립트와 안내문이 포함되어 있고, 실제 `.oft` 파일은 Windows Outlook 환경에서 생성해야 합니다.
+
+            <ol>
+              <li>Windows PC에서 Outlook이 설치된 상태로 이 폴더를 엽니다.</li>
+              <li>PowerShell에서 `Create_OFT_Windows_Outlook.ps1`를 실행합니다.</li>
+              <li>`F5_AppWorld_Seoul_2026_EDM.oft`가 생성되면 Outlook에서 직접 열어볼 수 있습니다.</li>
+            </ol>
+          </div>
+          <div class="meta-list">
+            <div class="meta-item">
+              <strong>현재 상태</strong>
+              <span>`.oft` 파일은 아직 저장소에 없습니다. 스크립트와 안내문만 준비되어 있습니다.</span>
+            </div>
+            <div class="meta-item">
+              <strong>필요 파일</strong>
+              <span><a href="Create_OFT_Windows_Outlook.ps1" target="_blank" rel="noreferrer" style="color:#fff;">PowerShell 스크립트</a><br><a href="F5_AppWorld_Seoul_2026_OFT_INSTRUCTIONS.txt" target="_blank" rel="noreferrer" style="color:#fff;">변환 안내문</a></span>
+            </div>
+            <div class="meta-item">
+              <strong>대안</strong>
+              <span>Mac이나 브라우저에서는 `HTML` 또는 `EML`로 검수하고, 실제 발송용 템플릿이 필요할 때만 Windows Outlook에서 `OFT`를 생성하는 흐름이 가장 안전합니다.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const buttons = [...document.querySelectorAll(".tab-button")];
+    const panels = [...document.querySelectorAll(".tab-panel")];
+    const title = document.getElementById("panel-title");
+    const badge = document.getElementById("panel-badge");
+    const tabMeta = {
+      html: { title: "HTML Preview", badge: "바로 미리보기 가능", badgeClass: "ok" },
+      eml: { title: "EML Source + File Access", badge: "원문 확인 가능", badgeClass: "ok" },
+      oft: { title: "OFT Guidance", badge: "브라우저 미리보기 불가", badgeClass: "warn" }
+    };
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const tab = button.dataset.tab;
+        buttons.forEach((item) => item.classList.toggle("active", item === button));
+        panels.forEach((panel) => panel.classList.toggle("active", panel.dataset.panel === tab));
+        title.textContent = tabMeta[tab].title;
+        badge.textContent = tabMeta[tab].badge;
+        badge.className = `badge ${tabMeta[tab].badgeClass}`;
+      });
+    });
+
+    fetch("F5_AppWorld_Seoul_2026_EDM.eml")
+      .then((response) => response.text())
+      .then((text) => {
+        document.getElementById("eml-source").textContent = text;
+      })
+      .catch(() => {
+        document.getElementById("eml-source").textContent = "EML 파일을 브라우저에서 불러오지 못했습니다. 위의 직접 열기 링크를 사용해 주세요.";
+      });
+  </script>
+</body>
+</html>
