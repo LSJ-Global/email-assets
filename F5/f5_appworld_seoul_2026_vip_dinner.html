@@ -11,41 +11,62 @@
     img { -ms-interpolation-mode: bicubic; }
     img { border: 0; outline: none; text-decoration: none; display: block; }
     table { border-collapse: collapse !important; }
-    body { margin: 0 !important; padding: 0 !important; width: 100% !important; }
-    @media screen and (max-width: 750px) {
-      .email-container { width: 100% !important; }
-      .fluid { width: 100% !important; height: auto !important; }
-      .button-image { width: 42% !important; min-width: 270px !important; height: auto !important; }
+    html, body { margin: 0 !important; padding: 0 !important; width: 100% !important; min-width: 0 !important; overflow-x: hidden !important; }
+    .email-container { width: 100% !important; max-width: 600px !important; }
+    .fluid { width: 100% !important; max-width: 600px !important; height: auto !important; }
+    .button-image { width: 100% !important; max-width: 258px !important; height: auto !important; }
+    @media screen and (max-width: 600px) {
+      .email-container { width: 100% !important; max-width: 100% !important; }
+      .fluid { width: 100% !important; max-width: 100% !important; height: auto !important; }
+      .button-wrap { width: 43% !important; max-width: 258px !important; }
+      .button-image { width: 100% !important; max-width: 258px !important; height: auto !important; }
     }
   </style>
+  <!--[if mso]>
+  <style>
+    .email-container { width: 600px !important; }
+    .fluid { width: 600px !important; height: auto !important; }
+    .button-wrap { width: 258px !important; }
+    .button-image { width: 258px !important; height: auto !important; }
+  </style>
+  <![endif]-->
 </head>
-<body style="margin:0; padding:0; background-color:#f2f2f2;">
+<body class="body" style="margin:0; padding:0; width:100%; min-width:0; background-color:#f2f2f2; overflow-x:hidden;">
   <div style="display:none; max-height:0; overflow:hidden; mso-hide:all; font-size:1px; line-height:1px; color:#f2f2f2; opacity:0;">
     F5 AppWorld Seoul 2026에 초대합니다. VIP 네트워킹 디너 등록 링크를 확인하세요.
   </div>
-  <center style="width:100%; background-color:#f2f2f2;">
-    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color:#f2f2f2; border-collapse:collapse;">
+  <center style="width:100%; min-width:0; background-color:#f2f2f2;">
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="width:100%; max-width:100%; background-color:#f2f2f2; border-collapse:collapse;">
       <tr>
-        <td align="center" style="padding:0;">
-          <table role="presentation" class="email-container" cellspacing="0" cellpadding="0" border="0" width="750" style="width:750px; max-width:750px; background-color:#000000; border-collapse:collapse;">
+        <td align="center" style="padding:0; min-width:0;">
+          <!--[if mso]>
+          <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" align="center" style="width:600px; background-color:#000000; border-collapse:collapse;"><tr><td>
+          <![endif]-->
+          <div style="width:100%; max-width:600px; margin:0 auto; background-color:#000000;">
+          <table role="presentation" class="email-container" cellspacing="0" cellpadding="0" border="0" width="100%" style="width:100%; max-width:600px; background-color:#000000; border-collapse:collapse;">
             <tr>
               <td style="padding:0; font-size:0; line-height:0; mso-line-height-rule:exactly;">
-                <img class="fluid" src="https://lsj-global.github.io/email-assets/F5/assets/f5-appworld-seoul-2026-top.png" width="750" height="461" alt="F5 AppWorld Seoul 2026 초청장" style="display:block; width:750px; max-width:750px; height:auto; border:0;">
+                <!--[if mso]><img class="fluid" src="https://lsj-global.github.io/email-assets/F5/assets/f5-appworld-seoul-2026-top.png" width="600" height="369" alt="F5 AppWorld Seoul 2026 초청장" style="display:block; width:600px; height:auto; border:0;"><![endif]-->
+                <!--[if !mso]><!--><img class="fluid" src="https://lsj-global.github.io/email-assets/F5/assets/f5-appworld-seoul-2026-top.png" width="100%" alt="F5 AppWorld Seoul 2026 초청장" style="display:block; width:100% !important; max-width:600px; height:auto !important; border:0;"><!--<![endif]-->
               </td>
             </tr>
             <tr>
               <td align="center" bgcolor="#000000" style="padding:0; font-size:0; line-height:0; mso-line-height-rule:exactly;">
-                <a href="https://www.f5.com/ko_kr/go/event/f5-appworld-seoul-2026-vip-dinner" target="_blank" style="display:inline-block; border:0; text-decoration:none;">
-                  <img class="button-image" src="https://lsj-global.github.io/email-assets/F5/assets/f5-appworld-seoul-2026-register-button.png" width="322" height="116" alt="행사 등록하기" style="display:block; width:322px; height:auto; border:0;">
-                </a>
+                <!--[if mso]><a href="https://www.f5.com/ko_kr/go/event/f5-appworld-seoul-2026-vip-dinner" target="_blank" style="text-decoration:none;"><img class="button-image" src="https://lsj-global.github.io/email-assets/F5/assets/f5-appworld-seoul-2026-register-button.png" width="258" height="93" alt="행사 등록하기" style="display:block; width:258px; height:auto; border:0;"></a><![endif]-->
+                <!--[if !mso]><!--><a class="button-wrap" href="https://www.f5.com/ko_kr/go/event/f5-appworld-seoul-2026-vip-dinner" target="_blank" style="display:inline-block; width:43%; max-width:258px; border:0; text-decoration:none;"><img class="button-image" src="https://lsj-global.github.io/email-assets/F5/assets/f5-appworld-seoul-2026-register-button.png" width="100%" alt="행사 등록하기" style="display:block; width:100% !important; max-width:258px; height:auto !important; border:0;"></a><!--<![endif]-->
               </td>
             </tr>
             <tr>
               <td style="padding:0; font-size:0; line-height:0; mso-line-height-rule:exactly;">
-                <img class="fluid" src="https://lsj-global.github.io/email-assets/F5/assets/f5-appworld-seoul-2026-body.png" width="750" height="1482" alt="F5 AppWorld Seoul 2026 행사 프로그램 및 VIP 네트워킹 디너 프로그램" style="display:block; width:750px; max-width:750px; height:auto; border:0;">
+                <!--[if mso]><img class="fluid" src="https://lsj-global.github.io/email-assets/F5/assets/f5-appworld-seoul-2026-body.png" width="600" height="1186" alt="F5 AppWorld Seoul 2026 행사 프로그램 및 VIP 네트워킹 디너 프로그램" style="display:block; width:600px; height:auto; border:0;"><![endif]-->
+                <!--[if !mso]><!--><img class="fluid" src="https://lsj-global.github.io/email-assets/F5/assets/f5-appworld-seoul-2026-body.png" width="100%" alt="F5 AppWorld Seoul 2026 행사 프로그램 및 VIP 네트워킹 디너 프로그램" style="display:block; width:100% !important; max-width:600px; height:auto !important; border:0;"><!--<![endif]-->
               </td>
             </tr>
           </table>
+          </div>
+          <!--[if mso]>
+          </td></tr></table>
+          <![endif]-->
         </td>
       </tr>
     </table>

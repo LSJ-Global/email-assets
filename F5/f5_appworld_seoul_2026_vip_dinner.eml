@@ -1,12 +1,12 @@
 From: F5 AppWorld <AppWorld@f5.com>
 Subject: F5 AppWorld Seoul 2026 VIP Dinner =?utf-8?b?7LSI7LKt?=
-Date: Wed, 06 May 2026 06:50:30 +0000
-Message-ID: <177805023037.59434.11632737097987624038@f5.com>
+Date: Wed, 06 May 2026 07:19:10 +0000
+Message-ID: <177805195091.60695.9360656017806692993@f5.com>
 MIME-Version: 1.0
 Content-Type: multipart/alternative;
- boundary="===============6014850212588356207=="
+ boundary="===============8495020497883971564=="
 
---===============6014850212588356207==
+--===============8495020497883971564==
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 
@@ -19,7 +19,7 @@ https://www.f5.com/ko_kr/go/event/f5-appworld-seoul-2026-vip-dinner
 장소: 웨스틴 서울 파르나스
 문의: AppWorld@f5.com
 
---===============6014850212588356207==
+--===============8495020497883971564==
 Content-Type: text/html; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
@@ -39,17 +39,33 @@ MIME-Version: 1.0
     img { -ms-interpolation-mode: bicubic; }
     img { border: 0; outline: none; text-decoration: none; display: block; }
     table { border-collapse: collapse !important; }
-    body { margin: 0 !important; padding: 0 !important; width: 100% !importan=
-t; }
-    @media screen and (max-width: 750px) {
-      .email-container { width: 100% !important; }
-      .fluid { width: 100% !important; height: auto !important; }
-      .button-image { width: 42% !important; min-width: 270px !important; hei=
-ght: auto !important; }
+    html, body { margin: 0 !important; padding: 0 !important; width: 100% !im=
+portant; min-width: 0 !important; overflow-x: hidden !important; }
+    .email-container { width: 100% !important; max-width: 600px !important; }
+    .fluid { width: 100% !important; max-width: 600px !important; height: aut=
+o !important; }
+    .button-image { width: 100% !important; max-width: 258px !important; heig=
+ht: auto !important; }
+    @media screen and (max-width: 600px) {
+      .email-container { width: 100% !important; max-width: 100% !important; }
+      .fluid { width: 100% !important; max-width: 100% !important; height: au=
+to !important; }
+      .button-wrap { width: 43% !important; max-width: 258px !important; }
+      .button-image { width: 100% !important; max-width: 258px !important; he=
+ight: auto !important; }
     }
   </style>
+  <!--[if mso]>
+  <style>
+    .email-container { width: 600px !important; }
+    .fluid { width: 600px !important; height: auto !important; }
+    .button-wrap { width: 258px !important; }
+    .button-image { width: 258px !important; height: auto !important; }
+  </style>
+  <![endif]-->
 </head>
-<body style=3D"margin:0; padding:0; background-color:#f2f2f2;">
+<body class=3D"body" style=3D"margin:0; padding:0; width:100%; min-width:0; b=
+ackground-color:#f2f2f2; overflow-x:hidden;">
   <div style=3D"display:none; max-height:0; overflow:hidden; mso-hide:all; fo=
 nt-size:1px; line-height:1px; color:#f2f2f2; opacity:0;">
     F5 AppWorld Seoul 2026=EC=97=90 =EC=B4=88=EB=8C=80=ED=95=A9=EB=8B=88=EB=
@@ -57,49 +73,78 @@ nt-size:1px; line-height:1px; color:#f2f2f2; opacity:0;">
 =EB=A1=9D =EB=A7=81=ED=81=AC=EB=A5=BC =ED=99=95=EC=9D=B8=ED=95=98=EC=84=B8=EC=
 =9A=94.
   </div>
-  <center style=3D"width:100%; background-color:#f2f2f2;">
+  <center style=3D"width:100%; min-width:0; background-color:#f2f2f2;">
     <table role=3D"presentation" cellspacing=3D"0" cellpadding=3D"0" border=
-=3D"0" width=3D"100%" style=3D"background-color:#f2f2f2; border-collapse:coll=
-apse;">
+=3D"0" width=3D"100%" style=3D"width:100%; max-width:100%; background-color:#=
+f2f2f2; border-collapse:collapse;">
       <tr>
-        <td align=3D"center" style=3D"padding:0;">
+        <td align=3D"center" style=3D"padding:0; min-width:0;">
+          <!--[if mso]>
+          <table role=3D"presentation" cellspacing=3D"0" cellpadding=3D"0" bo=
+rder=3D"0" width=3D"600" align=3D"center" style=3D"width:600px; background-co=
+lor:#000000; border-collapse:collapse;"><tr><td>
+          <![endif]-->
+          <div style=3D"width:100%; max-width:600px; margin:0 auto; backgroun=
+d-color:#000000;">
           <table role=3D"presentation" class=3D"email-container" cellspacing=
-=3D"0" cellpadding=3D"0" border=3D"0" width=3D"750" style=3D"width:750px; max=
--width:750px; background-color:#000000; border-collapse:collapse;">
+=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%" style=3D"width:100%; max=
+-width:600px; background-color:#000000; border-collapse:collapse;">
             <tr>
               <td style=3D"padding:0; font-size:0; line-height:0; mso-line-he=
 ight-rule:exactly;">
-                <img class=3D"fluid" src=3D"https://lsj-global.github.io/emai=
-l-assets/F5/assets/f5-appworld-seoul-2026-top.png" width=3D"750" height=3D"46=
-1" alt=3D"F5 AppWorld Seoul 2026 =EC=B4=88=EC=B2=AD=EC=9E=A5" style=3D"displa=
-y:block; width:750px; max-width:750px; height:auto; border:0;">
+                <!--[if mso]><img class=3D"fluid" src=3D"https://lsj-global.g=
+ithub.io/email-assets/F5/assets/f5-appworld-seoul-2026-top.png" width=3D"600"=
+ height=3D"369" alt=3D"F5 AppWorld Seoul 2026 =EC=B4=88=EC=B2=AD=EC=9E=A5" st=
+yle=3D"display:block; width:600px; height:auto; border:0;"><![endif]-->
+                <!--[if !mso]><!--><img class=3D"fluid" src=3D"https://lsj-gl=
+obal.github.io/email-assets/F5/assets/f5-appworld-seoul-2026-top.png" width=
+=3D"100%" alt=3D"F5 AppWorld Seoul 2026 =EC=B4=88=EC=B2=AD=EC=9E=A5" style=3D=
+"display:block; width:100% !important; max-width:600px; height:auto !importan=
+t; border:0;"><!--<![endif]-->
               </td>
             </tr>
             <tr>
               <td align=3D"center" bgcolor=3D"#000000" style=3D"padding:0; fo=
 nt-size:0; line-height:0; mso-line-height-rule:exactly;">
-                <a href=3D"https://www.f5.com/ko_kr/go/event/f5-appworld-seou=
-l-2026-vip-dinner" target=3D"_blank" style=3D"display:inline-block; border:0;=
- text-decoration:none;">
-                  <img class=3D"button-image" src=3D"https://lsj-global.githu=
-b.io/email-assets/F5/assets/f5-appworld-seoul-2026-register-button.png" width=
-=3D"322" height=3D"116" alt=3D"=ED=96=89=EC=82=AC =EB=93=B1=EB=A1=9D=ED=95=98=
-=EA=B8=B0" style=3D"display:block; width:322px; height:auto; border:0;">
-                </a>
+                <!--[if mso]><a href=3D"https://www.f5.com/ko_kr/go/event/f5-=
+appworld-seoul-2026-vip-dinner" target=3D"_blank" style=3D"text-decoration:no=
+ne;"><img class=3D"button-image" src=3D"https://lsj-global.github.io/email-as=
+sets/F5/assets/f5-appworld-seoul-2026-register-button.png" width=3D"258" heig=
+ht=3D"93" alt=3D"=ED=96=89=EC=82=AC =EB=93=B1=EB=A1=9D=ED=95=98=EA=B8=B0" sty=
+le=3D"display:block; width:258px; height:auto; border:0;"></a><![endif]-->
+                <!--[if !mso]><!--><a class=3D"button-wrap" href=3D"https://w=
+ww.f5.com/ko_kr/go/event/f5-appworld-seoul-2026-vip-dinner" target=3D"_blank"=
+ style=3D"display:inline-block; width:43%; max-width:258px; border:0; text-de=
+coration:none;"><img class=3D"button-image" src=3D"https://lsj-global.github.=
+io/email-assets/F5/assets/f5-appworld-seoul-2026-register-button.png" width=
+=3D"100%" alt=3D"=ED=96=89=EC=82=AC =EB=93=B1=EB=A1=9D=ED=95=98=EA=B8=B0" sty=
+le=3D"display:block; width:100% !important; max-width:258px; height:auto !imp=
+ortant; border:0;"></a><!--<![endif]-->
               </td>
             </tr>
             <tr>
               <td style=3D"padding:0; font-size:0; line-height:0; mso-line-he=
 ight-rule:exactly;">
-                <img class=3D"fluid" src=3D"https://lsj-global.github.io/emai=
-l-assets/F5/assets/f5-appworld-seoul-2026-body.png" width=3D"750" height=3D"1=
-482" alt=3D"F5 AppWorld Seoul 2026 =ED=96=89=EC=82=AC =ED=94=84=EB=A1=9C=EA=
-=B7=B8=EB=9E=A8 =EB=B0=8F VIP =EB=84=A4=ED=8A=B8=EC=9B=8C=ED=82=B9 =EB=94=94=
-=EB=84=88 =ED=94=84=EB=A1=9C=EA=B7=B8=EB=9E=A8" style=3D"display:block; width=
-:750px; max-width:750px; height:auto; border:0;">
+                <!--[if mso]><img class=3D"fluid" src=3D"https://lsj-global.g=
+ithub.io/email-assets/F5/assets/f5-appworld-seoul-2026-body.png" width=3D"600=
+" height=3D"1186" alt=3D"F5 AppWorld Seoul 2026 =ED=96=89=EC=82=AC =ED=94=84=
+=EB=A1=9C=EA=B7=B8=EB=9E=A8 =EB=B0=8F VIP =EB=84=A4=ED=8A=B8=EC=9B=8C=ED=82=
+=B9 =EB=94=94=EB=84=88 =ED=94=84=EB=A1=9C=EA=B7=B8=EB=9E=A8" style=3D"display=
+:block; width:600px; height:auto; border:0;"><![endif]-->
+                <!--[if !mso]><!--><img class=3D"fluid" src=3D"https://lsj-gl=
+obal.github.io/email-assets/F5/assets/f5-appworld-seoul-2026-body.png" width=
+=3D"100%" alt=3D"F5 AppWorld Seoul 2026 =ED=96=89=EC=82=AC =ED=94=84=EB=A1=9C=
+=EA=B7=B8=EB=9E=A8 =EB=B0=8F VIP =EB=84=A4=ED=8A=B8=EC=9B=8C=ED=82=B9 =EB=94=
+=94=EB=84=88 =ED=94=84=EB=A1=9C=EA=B7=B8=EB=9E=A8" style=3D"display:block; wi=
+dth:100% !important; max-width:600px; height:auto !important; border:0;"><!--=
+<![endif]-->
               </td>
             </tr>
           </table>
+          </div>
+          <!--[if mso]>
+          </td></tr></table>
+          <![endif]-->
         </td>
       </tr>
     </table>
@@ -107,4 +152,4 @@ l-assets/F5/assets/f5-appworld-seoul-2026-body.png" width=3D"750" height=3D"1=
 </body>
 </html>
 
---===============6014850212588356207==--
+--===============8495020497883971564==--
